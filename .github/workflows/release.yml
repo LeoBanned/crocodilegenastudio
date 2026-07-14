@@ -1,12 +1,13 @@
 name: Publish signed Windows release
 
-on:
+"on":
   workflow_dispatch:
     inputs:
       release_notes:
-        description: Что изменилось в этой версии
+        description: "Что изменилось в этой версии"
         required: true
-        default: Улучшения стабильности, исправления и новые возможности.
+        type: string
+        default: "Улучшения стабильности, исправления и новые возможности."
 
 permissions:
   contents: write
