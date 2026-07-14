@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07090f" />
+  <title>Crocodile Gena Studio</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="noise"></div>
+
+  <div class="app-shell">
+    <header class="titlebar" data-tauri-drag-region>
+      <div class="titlebar-brand" data-tauri-drag-region>
+        <div class="mini-mark" data-tauri-drag-region><img src="./app-icon.png" alt="" data-tauri-drag-region /></div>
+        <span data-tauri-drag-region>Crocodile Gena Studio</span>
+        <span class="titlebar-version" data-tauri-drag-region>3.2.4</span>
+      </div>
+      <div class="window-actions">
+        <button class="window-button" id="window-minimize" aria-label="Свернуть">
+          <svg viewBox="0 0 16 16"><path d="M3 8.5h10"/></svg>
+        </button>
+        <button class="window-button" id="window-maximize" aria-label="Развернуть">
+          <svg viewBox="0 0 16 16"><rect x="3.5" y="3.5" width="9" height="9" rx="1"/></svg>
+        </button>
+        <button class="window-button window-close" id="window-close" aria-label="Закрыть">
+          <svg viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark"><img src="./app-icon.png" alt="" /></div>
+        <div>
+          <div class="brand-name">Crocodile Gena</div>
+          <div class="brand-caption">by Пиратская Станция <span aria-hidden="true">⚓</span></div>
+        </div>
+      </div>
+
+      <nav class="navigation" aria-label="Разделы приложения">
+        <div class="nav-label">Рабочая область</div>
+        <button class="nav-item" data-view="home">
+          <svg viewBox="0 0 24 24"><path d="M4 11.5L12 4l8 7.5V20h-5v-5H9v5H4z"/></svg>
+          <span>Главная</span>
+        </button>
+        <button class="nav-item active" data-view="fix">
+          <svg viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 01-5 5L4 17l3 3 5.5-5.5a4 4 0 005-5l-2.4 2.4-3-3z"/></svg>
+          <span>Online Fix</span>
+          <span class="nav-live">LIVE</span>
+        </button>
+        <button class="nav-item" data-view="saves">
+          <svg viewBox="0 0 24 24"><path d="M5 4h12l2 2v14H5zM8 4v6h8V4M8 15h8v5H8z"/></svg>
+          <span>Сохранения</span>
+          <span class="nav-live">NEW</span>
+        </button>
+        <button class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 13.5l1.2 1-.2 2.1-1.5.7-.8 1.4.2 1.7-2 1-1.3-1-1.6.3-1 1.3H9.8l-.7-1.5-1.5-.8-1.7.2-1-2 1-1.3-.3-1.6-1.3-1V9.8l1.5-.7.8-1.5-.2-1.7 2-1 1.3 1 1.6-.3 1-1.3h2.2l.7 1.5 1.5.8 1.7-.2 1 2-1 1.3.3 1.6 1.3 1v1.2z"/></svg>
+          <span>Настройки</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="social-links">
+          <button class="channel-card" id="open-personal-channel">
+            <span class="channel-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.4 4.2L3.8 10.6c-1.1.4-1.1 1.1-.2 1.4l4.3 1.3 1.6 4.8c.2.6.1.8.7.8.5 0 .7-.2 1-.5l2.1-2 4.4 3.2c.8.4 1.4.2 1.6-.8l2.8-13.2c.3-1.2-.5-1.8-1.7-1.4z"/></svg>
+            </span>
+            <span><strong>Мой Telegram</strong><small>@crocodilehub2</small></span>
+            <svg class="channel-arrow" viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg>
+          </button>
+          <button class="channel-card community-channel" id="open-community-channel">
+            <span class="channel-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.4 4.2L3.8 10.6c-1.1.4-1.1 1.1-.2 1.4l4.3 1.3 1.6 4.8c.2.6.1.8.7.8.5 0 .7-.2 1-.5l2.1-2 4.4 3.2c.8.4 1.4.2 1.6-.8l2.8-13.2c.3-1.2-.5-1.8-1.7-1.4z"/></svg>
+            </span>
+            <span><strong>Наш Telegram</strong><small>@piratestationn</small></span>
+            <svg class="channel-arrow" viewBox="0 0 20 20"><path d="M7 4l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="system-line"><span class="pulse-dot"></span><span>Система</span><b>ГОТОВО</b></div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <div class="page-topbar">
+        <div>
+          <div class="eyebrow" id="page-eyebrow">РАБОЧАЯ ОБЛАСТЬ</div>
+          <h1 id="page-title">Online Fix</h1>
+        </div>
+      </div>
+
+      <section class="view" id="view-home" data-view-panel="home">
+        <div class="home-hero premium-panel">
+          <div class="home-glow"></div>
+          <div class="hero-copy">
+            <span class="hero-kicker">CROCODILE GENA STUDIO 3.2.4</span>
+            <h2>Ваша игровая<br/><span>лаборатория.</span></h2>
+            <p>Единое пространство для настройки игр, управления сетевыми компонентами и будущих инструментов.</p>
+          </div>
+          <div class="hero-artwork"><img src="./hero-crocodile.png" alt="Фирменная иллюстрация Crocodile Gena" /></div>
+        </div>
+        <div class="home-grid">
+          <article class="metric-card"><span class="metric-icon mint"><svg viewBox="0 0 24 24"><path d="M6 18L18 6M8 6h10v10"/></svg></span><div><small>Активный модуль</small><strong>Online Fix</strong><p>Готов к установке и восстановлению</p></div></article>
+          <article class="metric-card module-card" data-open-view="saves"><span class="metric-icon blue"><svg viewBox="0 0 24 24"><path d="M5 4h12l2 2v14H5zM8 4v6h8V4M8 15h8v5H8z"/></svg></span><div><small>Модуль 02</small><strong>Менеджер сохранений</strong><p>Поиск и резервное копирование прогресса</p></div></article>
+          <article class="metric-card future-card"><span class="metric-icon violet"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><div><small>Следующий модуль</small><strong>Свободный слот</strong><p>Архитектура готова к расширению</p></div></article>
+        </div>
+      </section>
+
+      <section class="view active" id="view-fix" data-view-panel="fix">
+        <div class="workspace-grid">
+          <div class="workspace-main">
+            <section class="intro-strip">
+              <div><span class="intro-badge">MODULE 01</span><h2>Universal Online Fix</h2><p>Сканирование, настройка Steam и поддержка Epic Online Services в одном потоке.</p></div>
+              <div class="intro-art"><span></span><span></span><div>01</div></div>
+            </section>
+
+            <section class="premium-panel path-panel">
+              <div class="section-heading">
+                <span class="step-index">01</span>
+                <div><h3>Выберите директорию игры</h3><p>Укажите корневую папку — движок сам найдёт нужные компоненты.</p></div>
+                <span class="required-chip">ОБЯЗАТЕЛЬНО</span>
+              </div>
+              <div class="drop-zone" id="drop-zone">
+                <span class="folder-illustration"><svg viewBox="0 0 48 48"><path d="M6 13a4 4 0 014-4h10l4 5h14a4 4 0 014 4v18a4 4 0 01-4 4H10a4 4 0 01-4-4z"/><path d="M8 20h32"/></svg></span>
+                <div class="path-copy"><strong>Перетащите папку сюда</strong><span>или выберите её через системный проводник</span></div>
+                <button class="secondary-button" id="browse-button"><svg viewBox="0 0 20 20"><path d="M3 6h5l2 2h7v8H3z"/></svg>Выбрать</button>
+              </div>
+              <div class="path-entry">
+                <svg viewBox="0 0 20 20"><path d="M3 6h5l2 2h7v8H3z"/></svg>
+                <input id="game-path" type="text" autocomplete="off" spellcheck="false" placeholder="C:\Games\Название игры" />
+                <button class="scan-button" id="scan-button"><span>Сканировать</span><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="5"/><path d="M13 13l4 4"/></svg></button>
+              </div>
+            </section>
+
+            <section class="scan-progress premium-panel hidden" id="scan-progress">
+              <div class="scanner-orb"><span></span></div><div><strong>Анализируем структуру игры</strong><p id="scan-progress-text">Ищем исполняемые файлы и сетевые библиотеки…</p></div><div class="progress-track"><span></span></div>
+            </section>
+
+            <div id="game-workspace" class="hidden">
+              <section class="premium-panel game-panel">
+                <div class="game-cover"><img id="game-banner" alt="Обложка игры"/><div class="cover-fallback" id="cover-fallback">CG</div><span class="game-state" id="game-status">CLEAN</span></div>
+                <div class="game-summary">
+                  <div class="game-title-row"><div><span>ОБНАРУЖЕННАЯ ИГРА</span><h2 id="game-title">Название игры</h2></div><button class="icon-button" id="rescan-button" title="Повторить сканирование"><svg viewBox="0 0 20 20"><path d="M16 7a7 7 0 10.4 5M16 3v4h-4"/></svg></button></div>
+                  <div class="metadata-grid">
+                    <div><small>APP ID</small><strong id="game-appid">—</strong></div><div><small>ДВИЖОК</small><strong id="game-engine">—</strong></div><div><small>EXECUTABLE</small><strong id="game-exe">—</strong></div><div><small>STEAM API</small><strong id="game-steam">—</strong></div>
+                  </div>
+                  <div class="manual-search"><svg viewBox="0 0 20 20"><circle cx="8" cy="8" r="5"/><path d="M12 12l5 5"/></svg><input id="manual-query" placeholder="Игра определилась неверно? Введите название…"/><button id="manual-search-button">Найти в Steam</button></div>
+                </div>
+              </section>
+
+              <section class="premium-panel configuration-panel">
+                <div class="section-heading"><span class="step-index">02</span><div><h3>Конфигурация</h3><p>Параметры сетевого окружения и контента.</p></div></div>
+                <div class="setting-grid">
+                  <label class="setting-card"><span class="setting-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/></svg></span><span class="setting-copy"><b>Сетевое приложение</b><small>Fake AppID для общего лобби</small></span><select id="fake-appid"><option value="480">480 · Spacewar</option><option value="1484020">1484020 · Cube Racer</option><option value="250820">250820 · SteamVR</option><option value="3989960">3989960 · Custom</option></select></label>
+                  <label class="setting-card"><span class="setting-icon"><svg viewBox="0 0 24 24"><path d="M5 9h14v10H5zM8 9V7a4 4 0 018 0v2"/></svg></span><span class="setting-copy"><b>Разблокировать DLC</b><small>Добавить найденные DLC в конфиг</small></span><span class="switch"><input type="checkbox" id="unlock-dlc" checked/><i></i></span></label>
+                </div>
+                <div class="dlc-heading"><div><h4>Официальные DLC</h4><span id="dlc-count">0 пакетов</span></div><input id="dlc-filter" placeholder="Фильтр DLC"/></div>
+                <div class="dlc-list" id="dlc-list"><div class="empty-inline">DLC пока не загружены</div></div>
+              </section>
+
+              <aside class="premium-panel troubleshooting-notice" aria-label="Подсказка по устранению проблем">
+                <span class="troubleshooting-icon">!</span>
+                <div>
+                  <strong>Игра не запускается или не создаётся лобби?</strong>
+                  <p>Если проблема появилась сразу после установки Online Fix, следуйте пошаговым инструкциям в блоке Epic Online Services ниже.</p>
+                </div>
+              </aside>
+
+              <section class="premium-panel eos-panel" id="eos-panel">
+                <div class="eos-icon"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c4 4 6 8 6 12s-2 8-6 12c-4-4-6-8-6-12s2-8 6-12z"/></svg></div>
+                <div class="eos-copy"><div><h3>Epic Online Services</h3><span class="eos-status" id="eos-status">Проверка…</span></div><p>Пошаговое исправление запуска и создания лобби: сначала EpicFix, затем при необходимости восстановление оригинального EOS.</p></div>
+                <div class="eos-actions"><button class="ghost-button" id="epicfix-button">Установить EpicFix</button><button class="ghost-button danger-ghost" id="restore-eos-button">Восстановить EOS</button></div>
+              </section>
+
+              <section class="action-dock premium-panel">
+                <div><span class="action-ready"><i></i>ГОТОВО К УСТАНОВКЕ</span><p>Перед изменением существующие файлы будут сохранены в <code>.backup_orig</code>.</p></div>
+                <div class="action-buttons"><button class="uninstall-button hidden" id="uninstall-button">Удалить / восстановить</button><button class="install-button" id="install-button"><span>Установить Online Fix</span><svg viewBox="0 0 20 20"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button></div>
+              </section>
+            </div>
+          </div>
+
+          <aside class="activity-panel premium-panel">
+            <div class="activity-header"><div><span class="activity-led"></span><div><strong>Журнал операций</strong><small>LIVE OUTPUT</small></div></div><button id="clear-log" title="Очистить"><svg viewBox="0 0 20 20"><path d="M5 6h10l-1 11H6zM8 6V3h4v3M3 6h14"/></svg></button></div>
+            <div class="activity-body" id="activity-log"></div>
+            <div class="activity-footer"><span>СОСТОЯНИЕ</span><b>ГОТОВО К РАБОТЕ</b><i></i></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-saves" data-view-panel="saves">
+        <div class="saves-layout">
+          <section class="premium-panel saves-hero">
+            <div>
+              <span class="hero-kicker">MODULE 02</span>
+              <h2>Менеджер сохранений</h2>
+              <p>Поиск игрового прогресса в стандартных папках Windows, игровых движков, Steam и распространённых эмуляторов.</p>
+            </div>
+            <button class="install-button" id="scan-saves-button"><span>Найти сохранения</span><svg viewBox="0 0 20 20"><circle cx="9" cy="9" r="5"/><path d="M13 13l4 4"/></svg></button>
+          </section>
+
+          <div class="save-stats">
+            <article class="premium-panel save-stat"><small>НАЙДЕНО ПАПОК</small><strong id="save-location-count">0</strong><span>источников прогресса</span></article>
+            <article class="premium-panel save-stat"><small>ВСЕГО ФАЙЛОВ</small><strong id="save-file-count">0</strong><span>готово к резервированию</span></article>
+            <article class="premium-panel save-stat"><small>ОБЩИЙ РАЗМЕР</small><strong id="save-total-size">0 Б</strong><span>до сжатия архива</span></article>
+          </div>
+
+          <section class="premium-panel save-browser">
+            <div class="save-browser-header">
+              <div><span class="coming-label">НАЙДЕННЫЕ ДАННЫЕ</span><h3>Папки сохранений</h3><p>Снимите отметку с папок, которые не нужно добавлять в архив.</p></div>
+              <div class="save-selection-actions"><button class="ghost-button" id="save-toggle-selection">Выделить все</button></div>
+            </div>
+            <div class="save-empty" id="save-empty">
+              <span><svg viewBox="0 0 32 32"><path d="M5 9h9l3 3h10v14H5z"/><path d="M8 6h12v6"/></svg></span>
+              <h3>Сканирование ещё не запускалось</h3>
+              <p>Нажмите «Найти сохранения», чтобы проверить популярные расположения.</p>
+            </div>
+            <div class="save-list hidden" id="save-list"></div>
+          </section>
+
+          <section class="premium-panel save-archive-dock">
+            <div class="save-archive-copy"><span class="action-ready"><i></i>ГОТОВО К АРХИВАЦИИ</span><p>Оригиналы не изменяются. Перед созданием архива рекомендуется закрыть запущенные игры.</p></div>
+            <label class="archive-format"><span>Формат</span><select id="save-format"><option value="zip">ZIP · рекомендуется</option><option value="rar">RAR · требуется WinRAR</option></select></label>
+            <button class="install-button" id="create-save-archive" disabled><span>Создать архив</span><svg viewBox="0 0 20 20"><path d="M4 4h12v12H4zM7 4v5h6V4M7 13h6"/></svg></button>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-settings" data-view-panel="settings">
+        <div class="settings-layout">
+          <section class="premium-panel settings-card"><span class="coming-label">ИНТЕРФЕЙС</span><h2>Внешний вид</h2><p>Выберите цвет светового акцента. Настройка сохраняется локально.</p><div class="accent-picker"><button class="accent active" data-accent="mint" style="--swatch:#63f5c2"></button><button class="accent" data-accent="violet" style="--swatch:#a987ff"></button><button class="accent" data-accent="blue" style="--swatch:#5ca8ff"></button><button class="accent" data-accent="rose" style="--swatch:#ff739d"></button></div></section>
+          <section class="premium-panel settings-card"><span class="coming-label">ПРИЛОЖЕНИЕ</span><h2>О программе</h2><div class="about-row"><span>Версия</span><b>3.2.4</b></div><div class="about-row"><span>Назначение</span><b>Игровые инструменты</b></div><div class="about-row"><span>Активные модули</span><b>Online Fix · Сохранения</b></div></section>
+          <section class="premium-panel settings-card update-settings-card">
+            <div class="update-settings-copy"><span class="coming-label">АВТООБНОВЛЕНИЕ</span><h2>Всегда актуальная версия</h2><p id="update-settings-status">Новые версии проверяются автоматически при запуске программы.</p></div>
+            <div class="update-settings-side"><span class="update-version-chip"><i></i>Версия 3.2.4</span><button class="secondary-button" id="check-update-button">Проверить обновления</button></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modal-backdrop">
+    <div class="modal premium-panel"><div class="modal-symbol" id="modal-symbol">!</div><h3 id="modal-title">Подтверждение</h3><p id="modal-message"></p><div class="modal-actions"><button class="secondary-button" id="modal-cancel">Отмена</button><button class="install-button" id="modal-confirm">Продолжить</button></div></div>
+  </div>
+  <div class="update-backdrop hidden" id="update-backdrop">
+    <section class="update-modal premium-panel" role="dialog" aria-modal="true" aria-labelledby="update-title">
+      <div class="update-shine"></div>
+      <div class="update-orb"><span></span><svg viewBox="0 0 32 32"><path d="M16 5v15M10 15l6 6 6-6M7 27h18"/></svg></div>
+      <span class="update-kicker">ДОСТУПНО ОБНОВЛЕНИЕ</span>
+      <h2 id="update-title">Новая версия программы</h2>
+      <div class="update-version-flow"><span id="update-current-version">3.2.4</span><i>→</i><strong id="update-new-version">—</strong></div>
+      <p class="update-notes" id="update-notes">В новой версии вас ждут улучшения и исправления.</p>
+      <div class="update-progress hidden" id="update-progress"><div><span id="update-progress-label">Подготовка загрузки…</span><b id="update-progress-value">0%</b></div><div class="update-progress-track"><i id="update-progress-bar"></i></div></div>
+      <div class="update-actions"><button class="secondary-button" id="update-later-button">Позже</button><button class="install-button" id="update-install-button"><span>Скачать и установить</span><svg viewBox="0 0 20 20"><path d="M10 3v10M6 9l4 4 4-4M4 17h12"/></svg></button></div>
+      <small class="update-security">Обновление проверено цифровой подписью</small>
+    </section>
+  </div>
+  <div class="toast-stack" id="toast-stack"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
